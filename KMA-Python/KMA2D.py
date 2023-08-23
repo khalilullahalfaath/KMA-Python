@@ -22,35 +22,36 @@ global one_elit_fx
 RA = 100
 RB = -100
 
-def pop_cons_initialization(pop_size):
+def pop_cons_initialization(PS):
     # pop_cons_initialization is a function to initialize the population of KMA algorithm.
-    # pop_size is the size of the population.
+    # PS is the size of the population.
     # pop_cons_initialization returns the initial population.
-    # num_location (integer) is the number of locations.
+    # NL (integer) is the number of locations.
 
     global NVAR
     global RA 
     global RB 
 
-    f1 = [0.01, 0.01, 0.99, 0.99]
-    f2 = [0.01, 0.99, 0.01, 0.99]
-    x = np.zeros((pop_size, NVAR))
+    f1 = np.array([0.01, 0.01, 0.99, 0.09])
+    f2 = np.array([0.01, 0.99, 0.01, 0.99])
 
-    index_x = 1
-    for i in range(1, pop_size, 4):
-        if pop_size - i >= 4:
-            num_location = 4
+    x = np.zeros((PS, NVAR))
+    IndX = 0
+
+    for nn in range(0, PS + 1, 4):
+        if PS - nn >= 4:
+            NL = 4
         else:
-            num_location = pop_size - i + 1
-        index = 1
-        while index <= num_location:
-            temp = np.zeros((1, NVAR))
-            for j in range(1, np.floor(n_var/2)):
-                temp[j] = RB + ((RA - RB) * f1[j]) * (f1[index] + ((np.random*2)-1) * 0.01)
-            for j in range(np.floor(n_var/2), n_var):
-                temp[j] = RB + ((RA - RB) * f2[j]) * (f2[index] + ((np.random*2)-1) * 0.01)
-            x[index_x] = temp
-            index_x += 1
+            NL = PS - nn + 1
+        ss = 0
+        while ss <= NL:
+            temp = np.zeros((NVAR))
+            for i in range(1, np.floor(n_var/2)):
+                temp[i] = RB + ((RA - RB) * f1[i]) * (f1[ss] + ((np.random.rand()*2)-1) * 0.01)
+            for i in range(np.floor(n_var/2), n_var):
+                temp[i] = RB + ((RA - RB) * f2[i]) * (f2[ss] + ((np.random.rand()*2)-1) * 0.01)
+            x[IndX] = temp
+            IndX += 1
             index += 1
     return x 
 

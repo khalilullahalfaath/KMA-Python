@@ -53,9 +53,11 @@ def pop_cons_initialization(PS, Ra, Rb, Nvar):
         while ss < NL:
             Temp = np.zeros(Nvar)
             
+            # this loop will fill the left half of Temp with random number between Ra and Rb multiplied by F1
             for i in range(Nvar // 2):
                 Temp[i] = Rb[i] + (Ra[i] - Rb[i]) * (F1[ss] + (np.random.rand() * 2 - 1) * 0.01)
             
+            # this loop will fill the right half of Temp with random number between Ra and Rb multiplied by F2
             for i in range(Nvar // 2, Nvar):
                 Temp[i] = Rb[i] + (Ra[i] - Rb[i]) * (F2[ss] + (np.random.rand() * 2 - 1) * 0.01)
             

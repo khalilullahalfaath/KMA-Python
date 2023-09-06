@@ -1,5 +1,4 @@
 """
-Created on Wed Apr  1 15:00:00 2020
 KMA2D.py
 KMA2D is a Python function for solving optimization problems with KMA algorithm.
 KMA2D is based on the following paper:
@@ -9,17 +8,6 @@ Originally written by Suyanto Suyanto, Alifya Aisyah Ariyanto, Alifya Fatimah Ar
 Then translated to Python by Khalilullah Al Faath in 2023.
 """
 import numpy as np
-
-global n_var, f_treshold_fx, max_num_eva
-global pop_size, min_ada_pop_size, max_ada_pop_size
-global big_males, big_males_fx
-global female, female_fx
-global small_males, small_males_fx
-global all_hq, all_hq_fx
-global mlipir_rate, mut_rate, mut_radius
-global one_elit_fx
-
-
 def pop_cons_initialization(PS, Nvar, Ra, Rb):
     # pop_cons_initialization is a function to initialize the population of KMA algorithm.
     # PS is the size of the population.

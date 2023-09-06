@@ -39,4 +39,18 @@ def evaluation(x):
         case 8:
             # Schwefel function
             fx = sum(-x * np.sin(np.sqrt(abs(x))))
+        case 9:
+            # Rastrigin function
+            fx = sum(x ** 2 - 10 * np.cos(2 * np.pi * x)) + 10*dim
+        case 10:
+            # Ackley function
+            fx = -20 * np.exp(-0.2 * np.sqrt(sum(x ** 2) / dim)) - np.exp(sum(np.cos(2 * np.pi * x)) / dim) + 20 + np.exp(1)
+        case 11:
+            # Griewank function
+            fx = sum(x ** 2) / 4000 - np.prod(np.cos(x / np.sqrt(np.arange(1, dim + 1)))) + 1
+        case 12:
+            # Penalized function
+            a = 10;k = 100;m = 4;dim = len(x)
+            fx = (np.pi/dim) * (10 * (np.sin(np.pi * (1 + (x[0]+1)/4)))**2) + sum((((x[0:dim-1]+1)*1/4)**2)*(1+10*()))
+
     return fx

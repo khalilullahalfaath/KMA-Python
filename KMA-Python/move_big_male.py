@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from utils.trimr import trimr
+import evaluation, replacement, crossover, mutation
 
 def move_big_males_female_first_stage(big_males, big_males_fx, female, female_fx, nvar):
     HQ = big_males
@@ -28,7 +29,40 @@ def move_big_males_female_first_stage(big_males, big_males_fx, female, female_fx
         newBM = tempSM[ss, ] + VM # new big males
         newBM = trimr(newBM)
         tempSM[ss, ] = newBM
-        tempSMFX[ss] = 
+        tempSMFX[ss] = evaluation(newBM)
+
+    # replace the big males with the best ones
+    big_males, big_males_fx = replacement(big_males, big_males_fx, tempSM, tempSMFX)
+
+    winnerBM = big_males[0, ]
+    winnerFX = big_males_fx[0]
+
+    if winnerFX < female_fx or np.random.rand() < 0.5: # sexual reproduction
+        offsprings = crossover(winnerBM, female)
+
+        fx1 = evaluation(offsprings[0, ])
+        fx2 = evaluation(offsprings[1, ])
+
+        # keep the best position for females
+        if fx1 < fx2:
+            if fx1 < female_fx:
+                female = offsprings[0, ]
+                female_fx = fx1
+        else:
+            if fx2 < female_fx:
+                female = offsprings[1, ]
+                female_fx = fx2
+    else: # asexual reproduction
+        newFemale = mutation
+        fx = evaluation(newFemale)
+
+        # keep the best postion of female
+        if fx < female_fx:
+            female = newFemale
+            female_fx = fx
+        
+
+
 
 
 

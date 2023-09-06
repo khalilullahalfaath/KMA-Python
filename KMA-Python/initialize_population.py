@@ -20,11 +20,13 @@ global mlipir_rate, mut_rate, mut_radius
 global one_elit_fx
 
 
-def pop_cons_initialization(PS, Ra, Rb, Nvar):
+def pop_cons_initialization(PS, Nvar, Ra, Rb):
     # pop_cons_initialization is a function to initialize the population of KMA algorithm.
     # PS is the size of the population.
     # pop_cons_initialization returns the initial population.
     # NL (integer) is the number of locations.
+
+    print("Initializing the population...")
 
     # f1 and f2 are the vectors of the random numbers contains contants value for initialization.
     F1 = np.array([0.01, 0.01, 0.99, 0.99])

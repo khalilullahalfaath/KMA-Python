@@ -11,3 +11,5 @@ def replacement(x, fx, y, fy):
     SortedInd=FXFY.argsort(axis=1)
     z = XY[SortedInd, ]
     fz = SortedVal[:LX]
+
+    return z, fz

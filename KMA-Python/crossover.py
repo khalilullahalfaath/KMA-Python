@@ -14,3 +14,5 @@ def crossover(parent1, parent2):
     
     offsprings[0,:] = trimr(offsprings[0,:])
     offsprings[1,:] = trimr(offsprings[1,:])
+
+    return offsprings

@@ -8,26 +8,26 @@ def evaluation(x):
     ############# unimodal function ################
         case 1:
             # sphere function
-            fx = 0
-            for i in range(dim):
-                fx += x[i] ** 2
+            fx = np.sum(x ** 2)
         case 2:
             # schwefel 2.22 function
-            fx = sum(abs(x)) + np.prod(abs(x))
+            fx = np.sum(np.abs(x)) + np.prod(np.abs(x))
         case 3:
             # schwefel 1.2 function
             fx = 0
             for i in range(dim):
-                fx += sum(x[:i]) ** 2
+                fx += sum(x[:i])**2
         case 4:
             # schwefel 2.21 function
-            fx = max(abs(x))
+            fx = np.max(np.abs(x))
         case 5:
             # rosenbrock function
-            fx = sum(100 * (x[1:dim] - x[:dim-1] ** 2) ** 2 + (x[:dim-1] - 1) ** 2)
+            fx = 0
+            for i in range(1,dim-1):
+                fx += 100 * (x[i+1]-x[i]**2)**2 + (x[i]-1)**2
         case 6:
             # step function
-            fx = sum(np.floor((x + 0.5)) ** 2)
+            fx = np.sum(np.floor((x + 0.5)) ** 2)
         case 7:
             # quartic function
             fx = 0
@@ -50,7 +50,11 @@ def evaluation(x):
             fx = sum(x ** 2) / 4000 - np.prod(np.cos(x / np.sqrt(np.arange(1, dim + 1)))) + 1
         case 12:
             # Penalized function
-            a = 10;k = 100;m = 4;dim = len(x)
-            fx = (np.pi/dim) * (10 * (np.sin(np.pi * (1 + (x[0]+1)/4)))**2) + sum((((x[0:dim-1]+1)*1/4)**2)*(1+10*()))
+            a = 10; k = 100; m = 4; dim = len(x)
+            yi = 1 + (x[0]+1)/4
+
+            u = sum(np)
+
+            fx = (np.pi/dim) * (10 * ((np.sin(np.pi * (1+(x[0]+1)/4))**2)) + np.sum((np.power((x[:dim-1]+1)*1/4))) )
 
     return fx

@@ -1,4 +1,4 @@
-from initialize_population import pop_cons_initialization
+from initialize_population import KMA2DInitializer
 import numpy as np
 
 # Path: KMA-Python\KMA2D.py
@@ -13,5 +13,5 @@ RB = np.ones((NVAR)) * RB
 # print(RA)
 # print(RB)
 
-pop = pop_cons_initialization(PS, RA, RB, NVAR)
-print(pop)
+initializer = KMA2DInitializer(PS, RA, RB, NVAR)
+population = initializer.pop_cons_initialization()

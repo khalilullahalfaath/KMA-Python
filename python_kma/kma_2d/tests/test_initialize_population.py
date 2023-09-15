@@ -1,16 +1,24 @@
 import unittest
 import numpy as np
 
-import initialize_population
+import sys
+# add parent directory to path
+sys.path.append('..')
+
+from initialize_population import KMA2DInitializer
 
 class TestKMA2DInitializer(unittest.TestCase):
+    # this class is used to test the KMA2DInitializer class
+    # there are two tests:
+    # 1. test_initialization_shape
+    # 2. test_values_within_bounds
     def test_initialization_shape(self):
         PS = 6  # Example population size
         Nvar = 2  # Example number of variables
         Ra = np.array([0.1, 0.2])  # Example lower bounds
         Rb = np.array([0.9, 0.8])  # Example upper bounds
 
-        initializer = initialize_population.KMA2DInitializer(PS, Ra, Rb, Nvar)
+        initializer = KMA2DInitializer(PS, Ra, Rb, Nvar)
         population = initializer.pop_cons_initialization()
 
         self.assertEqual(population.shape, (PS, Nvar))
@@ -21,7 +29,7 @@ class TestKMA2DInitializer(unittest.TestCase):
         Ra = np.array([0.1, 0.2, 0.3])  # Example lower bounds
         Rb = np.array([0.9, 0.8, 0.7])  # Example upper bounds
 
-        initializer = initialize_population.KMA2DInitializer(PS, Ra, Rb, Nvar)
+        initializer = KMA2DInitializer(PS, Ra, Rb, Nvar)
         population = initializer.pop_cons_initialization()
 
         for i in range(PS):

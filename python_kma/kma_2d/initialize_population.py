@@ -10,7 +10,6 @@ pop_cons_initialization returns the initial population of size PS x NVAR
 
 import numpy as np
 
-
 class KMA2DInitializer:
     def __init__(self, PS, Ra, Rb, Nvar):
         self.PS = PS

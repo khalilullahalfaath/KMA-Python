@@ -5,7 +5,7 @@ def evaluation(x):
     dim = len(x)
 
     match function_ID:
-    ############# unimodal function ################
+        ############# unimodal function ################
         case 1:
             # sphere function
             fx = np.sum(x ** 2)
